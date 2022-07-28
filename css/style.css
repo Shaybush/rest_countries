@@ -1,0 +1,25 @@
+
+h1,h2,h3,h4,h5,h6{
+    margin: 0;
+    padding: 0;
+}
+input{
+    /* text-transform: capitalize; */
+}
+header .fa-heart{
+    font-size: 1.5em;
+    color: red;
+    /* background: red; */
+}
+@media(max-width:768px){
+    .row button{
+        font-size: 0.7em;
+        padding: 12px 24px;
+    }
+    header .fa-heart{
+        font-size: 1em;
+    }
+    header h3{
+        font-size: 1.1em;
+    }
+}
