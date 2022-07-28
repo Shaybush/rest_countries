@@ -9,16 +9,25 @@ window.onload = () => {
     getCountry();
     updateUi();
 }
+// async function getCountry() {
+//     let url = "https://api.jsonbin.io/v3/b/62e240f88ebcdb7588453b4e"
+//     axios.get(url,{
+//         headers: {
+//           "X-Master-Key": "$2b$10$qX5KcsGIkrTwK8ydTZQsp.GbFVAdhGMJgBRDjR7IBw6TCWSZbWI12",
+//         }
+//       })
+//     .then(function(resp){
+//         // console.log(resp.data);
+//         initialize(resp.data);
+//       })
+// }
 /** get the api of rest countries */
 async function getCountry() {
-    const url = await fetch('https://restcountries.com/v2/all')
-        .then(function (res) {
-            return res.json();
-        })
-        .then(function (data) {
-            // filter the data to countries: 1.have capital 2.population more than 0.1M
-            countries_List = data.filter(country => country.capital && Math.floor(((country.population / 1000000) * 100) / 100) > 0);
-            // sending to trivia page
+    let url = "https://restcountries.com/v2/all"
+    axios.get(url)
+        .then(function (resp) {
+            console.log(resp.data);
+            countries_List = resp.data.filter(country => country.capital && Math.floor(((country.population / 1000000) * 100) / 100) > 0);
             build_trivia();
         })
         .catch(function () {
