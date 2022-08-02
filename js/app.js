@@ -27,7 +27,6 @@ function createCountries() {
     if (countries_List) {
         countries_List.forEach((item) => {
             let box_country = new Country(item.name, item.population, item.flag, item.region, item.capital);
-            box_country.render();
             // console.log(`name: ${item.name}  pop: ${item.population}  flags: ${item.flag}  region: ${item.region}`)
         })
     }
@@ -47,7 +46,7 @@ function declareEvents() {
                 // check : 1. capital exist 2. population bigger than 0M 3. country name exist input value
                 if (item.name.toLowerCase().includes(country_input.value.toLowerCase())) {
                     let box_country = new Country(item.name, item.population, item.flag, item.region, item.capital);
-                    box_country.render();
+                    // box_country.render();
                 }
             })
             // console.log(countries_List);

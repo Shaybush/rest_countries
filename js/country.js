@@ -5,6 +5,7 @@ class Country{
         this.img = _img;
         this.region = _region;
         this.capital = _capital;
+        this.render();
     }
     render(){
         // add options to search (input with select)

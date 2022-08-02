@@ -22,7 +22,7 @@ window.onload = () => {
 //       })
 // }
 /** get the api of rest countries */
-async function getCountry() {
+function getCountry() {
     let url = "https://restcountries.com/v2/all"
     axios.get(url)
         .then(function (resp) {
@@ -43,6 +43,7 @@ class Trivia {
         this.answers = _answersArr;
         // console.log(this.answers);
         this.correctAns = _correctAns;
+        this.render();
     }
     render() {
         document.querySelector("#id_question").innerHTML = `
@@ -140,7 +141,7 @@ function build_trivia() {
     let correct_ans = countries[rnd].capital;
     // console.log(`${name} \n ${shuffle(answers)} \n ${correct_ans}`)
     let trivia = new Trivia(rnd, shuffle(answers), correct_ans);
-    trivia.render();
+    // trivia.render();
 }
 function updateUi() {
     let question_level = document.querySelector("#question_counter");
@@ -157,18 +158,14 @@ function updateUi() {
 /** shuffle array places */
 function shuffle(array) {
     let currentIndex = array.length, randomIndex;
-
     // While there remain elements to shuffle.
     while (currentIndex != 0) {
-
         // Pick a remaining element.
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex--;
-
         // And swap it with the current element.
         [array[currentIndex], array[randomIndex]] = [
             array[randomIndex], array[currentIndex]];
     }
-
     return array;
 }
