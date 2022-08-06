@@ -3,13 +3,13 @@ h1,h2,h3,h4,h5,h6{
     margin: 0;
     padding: 0;
 }
-input{
-    /* text-transform: capitalize; */
-}
 header .fa-heart{
     font-size: 1.5em;
     color: red;
     /* background: red; */
+}
+.description p{
+    margin-bottom: 4px;
 }
 @media(max-width:768px){
     .row button{
@@ -20,6 +20,12 @@ header .fa-heart{
         font-size: 1em;
     }
     header h3{
-        font-size: 1.1em;
+        font-size: 1em;
+    }
+    .description h6{
+        font-size: 0.9em;
+    }
+    .description p{
+        font-size: 0.8em;
     }
 }

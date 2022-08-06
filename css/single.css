@@ -1,0 +1,44 @@
+body{
+    color: #333;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+h1,h2,h3,h4,h5,h6{
+    padding: 2px;
+    margin: 0;
+}
+.row .country_img {
+    max-width: 600px;
+    height: 300px;
+}
+
+.row .country_img img {
+    border: 1px solid black;
+    width: 100%;
+    height: 100%;
+}
+.row h1{
+    font-size: 2em;
+    font-weight: 700;
+}
+.row h3{
+    font-size: 1.5em;
+    font-weight: 500;
+}
+.row p{
+    font-size: 1.2em;
+}
+
+@media(max-width:768px){
+    .row .country_img{
+        height: 150px;
+    }
+    .row h1{
+        font-size: 1.5em;
+    }
+    .row h3{
+        font-size: 1.2em;
+    }
+    .row p{
+        font-size: 1em;
+    }
+}

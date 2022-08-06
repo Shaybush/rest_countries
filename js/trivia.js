@@ -9,24 +9,10 @@ window.onload = () => {
     getCountry();
     updateUi();
 }
-// async function getCountry() {
-//     let url = "https://api.jsonbin.io/v3/b/62e240f88ebcdb7588453b4e"
-//     axios.get(url,{
-//         headers: {
-//           "X-Master-Key": "$2b$10$qX5KcsGIkrTwK8ydTZQsp.GbFVAdhGMJgBRDjR7IBw6TCWSZbWI12",
-//         }
-//       })
-//     .then(function(resp){
-//         // console.log(resp.data);
-//         initialize(resp.data);
-//       })
-// }
-/** get the api of rest countries */
 function getCountry() {
     let url = "https://restcountries.com/v2/all"
     axios.get(url)
         .then(function (resp) {
-            console.log(resp.data);
             countries_List = resp.data.filter(country => country.capital && Math.floor(((country.population / 1000000) * 100) / 100) > 0);
             build_trivia();
         })
