@@ -16,16 +16,19 @@ class Country{
         document.querySelector("#datalistOptions").append(option);
         // create country box
         let myDiv = document.createElement("div");
-        myDiv.className = "box col-12 col-md-4 border border-info p-2 d-flex mb-2";
+        myDiv.className = "p-2 col-12 col-md-4";
         document.querySelector(this.parent).append(myDiv);
         myDiv.innerHTML +=`
-        <img style="margin-right: 8px;" src="${this.img}" alt="${this.name}" width="150" height="100">
-        <div class="description">
-            <h5 class="text-primary">${this.name}</h5>
-            <h6>capital : ${this.capital}</h6>
-            <p>Region : ${this.region}</p>
-            <button class="btn btn-info btn-sm more_btn">More info</button>
-        </div>
+        <div class="card h-100">
+          <div class="img_box">
+          <img src="${this.img}" class="card-img-top" alt="${this.name}">
+          </div>
+          <div class="card-body">
+              <h5 class="card-title text-primary">${this.name}</h5>
+              <p class="card-text">Capital : ${this.capital}</p>
+              <a href="#" class="btn btn-secondary more_btn">More Info</a>
+          </div>
+      </div>
         `
         let btn = myDiv.querySelector(".more_btn");
         btn.addEventListener("click",()=>{

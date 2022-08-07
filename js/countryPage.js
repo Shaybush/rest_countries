@@ -16,6 +16,9 @@ class CountryPage {
         document.querySelector(this.parent).innerHTML = '';
         document.querySelector(this.parent).append(div);
         div.innerHTML = `
+        <div class="col-2 justify-content-center d-flex align-items-center">
+             <i class="fa fa-angle-left" aria-hidden="true"></i>
+        </div>
         <div>
         <div class="country_img d-flex">
           <img src="${this.img}" alt="country">
@@ -27,6 +30,9 @@ class CountryPage {
            <p>Region : ${this.region}</p>
            <p>population : ${this.pop}</p>
        </div>
+       </div>
+       <div class="col-2 justify-content-center d-flex align-items-center">
+          <i class="fa fa-angle-right" aria-hidden="true"></i>
        </div>
         `
     }

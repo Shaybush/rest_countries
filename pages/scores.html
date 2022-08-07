@@ -5,8 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>High Scores</title>
+    <script defer src="../js/highScores.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
 </head>
 <body>
-    
+    <div class="container p-2">
+        <h1 class="mb-4 display-4">High Scores:</h1>
+        <table class="table table-striped table-hover table-dark">
+            <thead> 
+                <tr class="bg-warning">
+                    <td class="text-warning fs-4">Name</td>
+                    <td class="text-warning fs-4">Score</td>
+                    <td class="text-warning fs-4">Rank</td>
+                </tr>
+            </thead>
+            <tbody id="id_tbody">
+                <!-- <tr class="bg-primary text-white">
+                    <td>shay</td>
+                    <td>2</td>
+                </tr> -->
+            </tbody>
+        </table>
+        <div class="controls d-flex justify-content-center">
+            <button onclick="window.location.href ='../index.html';" class="btn btn-dark btn-lg me-2">Back</button>
+            <button onclick="window.location.href ='game.html';" class="btn btn-warning btn-lg">New Game</button>
+        </div>
+    </div>
 </body>
 </html>

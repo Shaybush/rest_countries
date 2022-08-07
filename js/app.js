@@ -1,6 +1,7 @@
 // filter countries 
-let countries_List = [];
+let countries_List = [],result;
 window.onload = () => {
+    result = 0;
     getCountry();
     declareEvents();
 }
@@ -11,15 +12,14 @@ function getCountry() {
     axios.get(url)
     .then(function(resp){
         // console.log(resp.data);
-        countries_List = resp.data;
+        countries_List = resp.data.filter(country => country.capital && Math.floor(((country.population / 1000000) * 100) / 100) > 0);
+        filtersUpdate(countries_List.length);
         createCountries();
     });
-
 }
 
 /**create all the contries from json file */
 function createCountries() {
-
     if (countries_List) {
         countries_List.forEach((item) => {
             let box_country = new Country("#id_row",item);
@@ -28,7 +28,9 @@ function createCountries() {
     }
     // localStorage.setItem("scoreList", JSON.stringify(scoresL));
 }
-
+const filtersUpdate = (searchFound) =>{
+    document.querySelector("#result_id").innerHTML = `found ${searchFound} countries`;
+}
 /** Manage all the events */
 function declareEvents() {
     let country_input = document.querySelector("#country_list");
@@ -38,14 +40,14 @@ function declareEvents() {
         country_input.addEventListener("input", () => {
             document.querySelector("#id_row").innerHTML = '';
             document.querySelector("#datalistOptions").innerHTML = '';
+            result = 0;
             countries_List.forEach((item) => {
-                // check : 1. capital exist 2. population bigger than 0M 3. country name exist input value
                 if (item.name.toLowerCase().includes(country_input.value.toLowerCase())) {
+                    result++;
                     let box_country = new Country("#id_row",item);
-                    // box_country.render();
                 }
             })
-            // console.log(countries_List);
+            filtersUpdate(result)
         })
     }
 }
