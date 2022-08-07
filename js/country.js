@@ -8,7 +8,7 @@ class Country{
         this.region = _item.region;
         this.capital = _item.capital;
         this.index = _index;
-        console.log(this.index)
+        console.log(this.capital);
         this.render();
     }
     render(){
