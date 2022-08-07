@@ -39,13 +39,9 @@ class CountryPage {
         let prev = div.querySelector(".prev")
         let next = div.querySelector(".next")
         prev.addEventListener("click", ()=>{
-            // לא נכון לעשות את זה ככה כי אנחנו שולחים את אותו 
-            // המדינה עם index  שונה 
             let page = new CountryPage(this.parent,countries_List[this.index-1] , this.index-1);
         })
         next.addEventListener("click", ()=>{
-            // לא נכון לעשות את זה ככה כי אנחנו שולחים את אותו 
-            // המדינה עם index  שונה 
             let page = new CountryPage(this.parent,countries_List[this.index+1] , this.index+1);
         })
     }
