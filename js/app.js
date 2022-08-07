@@ -21,8 +21,8 @@ function getCountry() {
 /**create all the contries from json file */
 function createCountries() {
     if (countries_List) {
-        countries_List.forEach((item) => {
-            let box_country = new Country("#id_row",item);
+        countries_List.forEach((item , index) => {
+            let box_country = new Country("#id_row",item , index);
             // console.log(`name: ${item.name}  pop: ${item.population}  flags: ${item.flag}  region: ${item.region}`)
         })
     }
@@ -41,10 +41,10 @@ function declareEvents() {
             document.querySelector("#id_row").innerHTML = '';
             document.querySelector("#datalistOptions").innerHTML = '';
             result = 0;
-            countries_List.forEach((item) => {
+            countries_List.forEach((item,index) => {
                 if (item.name.toLowerCase().includes(country_input.value.toLowerCase())) {
                     result++;
-                    let box_country = new Country("#id_row",item);
+                    let box_country = new Country("#id_row",item , index);
                 }
             })
             filtersUpdate(result)

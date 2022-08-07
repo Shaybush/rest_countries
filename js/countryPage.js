@@ -1,5 +1,5 @@
 class CountryPage {
-    constructor(_parent, _item) {
+    constructor(_parent, _item , _index) {
         this.parent = _parent;
         this.name = _item.name;
         this.pop = `${Math.floor((_item.population / 1000000) * 100) / 100}M`;
@@ -7,6 +7,7 @@ class CountryPage {
         this.language = _item.languages[0].name;
         this.region = _item.region;
         this.capital = _item.capital;
+        this.index = _index;
         this.render();
     }
     render() {
@@ -16,7 +17,7 @@ class CountryPage {
         document.querySelector(this.parent).innerHTML = '';
         document.querySelector(this.parent).append(div);
         div.innerHTML = `
-        <div class="col-2 justify-content-center d-flex align-items-center">
+        <div class="col-2 prev justify-content-center d-flex align-items-center">
              <i class="fa fa-angle-left" aria-hidden="true"></i>
         </div>
         <div>
@@ -31,9 +32,21 @@ class CountryPage {
            <p>population : ${this.pop}</p>
        </div>
        </div>
-       <div class="col-2 justify-content-center d-flex align-items-center">
+       <div class="col-2 next justify-content-center d-flex align-items-center">
           <i class="fa fa-angle-right" aria-hidden="true"></i>
        </div>
         `
+        let prev = div.querySelector(".prev")
+        let next = div.querySelector(".next")
+        prev.addEventListener("click", ()=>{
+            // לא נכון לעשות את זה ככה כי אנחנו שולחים את אותו 
+            // המדינה עם index  שונה 
+            let page = new CountryPage(this.parent,countries_List[this.index-1] , this.index-1);
+        })
+        next.addEventListener("click", ()=>{
+            // לא נכון לעשות את זה ככה כי אנחנו שולחים את אותו 
+            // המדינה עם index  שונה 
+            let page = new CountryPage(this.parent,countries_List[this.index+1] , this.index+1);
+        })
     }
 }
