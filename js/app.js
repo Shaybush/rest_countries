@@ -21,6 +21,7 @@ function getCountry() {
 /**create all the contries from json file */
 function createCountries() {
     if (countries_List) {
+        document.querySelector("#id_row").innerHTML = "";
         countries_List.forEach((item , index) => {
             let box_country = new Country("#id_row",item , index);
             // console.log(`name: ${item.name}  pop: ${item.population}  flags: ${item.flag}  region: ${item.region}`)

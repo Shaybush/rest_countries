@@ -36,13 +36,21 @@ class CountryPage {
           <i class="fa fa-angle-right" aria-hidden="true"></i>
        </div>
         `
-        let prev = div.querySelector(".prev")
-        let next = div.querySelector(".next")
+        let back = document.querySelector("#esc_btn");
+        let prev = div.querySelector(".prev");
+        let next = div.querySelector(".next");
+        back.addEventListener("click",()=>{
+            createCountries();
+        })
         prev.addEventListener("click", ()=>{
-            let page = new CountryPage(this.parent,countries_List[this.index-1] , this.index-1);
+            if(this.index-1>-1){
+                let page = new CountryPage(this.parent,countries_List[this.index-1] , this.index-1);
+            }
         })
         next.addEventListener("click", ()=>{
-            let page = new CountryPage(this.parent,countries_List[this.index+1] , this.index+1);
+            if(this.index+1 !=countries_List.length){
+                let page = new CountryPage(this.parent,countries_List[this.index+1] , this.index+1);
+            }
         })
     }
 }

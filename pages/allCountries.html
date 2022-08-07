@@ -23,13 +23,24 @@
             <input class="form-control" list="datalistOptions" id="country_list" placeholder="Search Country...">
             <datalist id="datalistOptions">
             </datalist>
-            <div class="filters mt-2">
+            <div class="controls mt-2 d-flex justify-content-between align-items-center">
                 <div class="results">
                     <h6 class="text-secondary"><span id="result_id"></span></h6>
+                </div>
+                <div class="filter_select">
+                    <select id="filter_id" class="form-select" aria-label="Default select example">
+                        <option selected>Open this select menu</option>
+                        <option value="name">Name</option>
+                        <option value="poplution">Poplution</option>
+                        <option value="region">Region</option>
+                    </select>
                 </div>
             </div>
         </section>
         <div class="row" id="id_row">
+        </div>
+        <div id="esc_id" class="esc d-none">
+            <button id="esc_btn" class="btn btn-secondary btn-sm">Back</button>
         </div>
     </div>
 </body>
