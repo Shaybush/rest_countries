@@ -19,6 +19,9 @@ header .fa-heart{
     width: 100%;
     height: 100%;
 }
+.answers .box .btn{
+    font-size: 1.5em;
+}
 .fa.fa-angle-right{
     font-size: 2em;
     cursor: pointer;
@@ -37,6 +40,9 @@ header .fa-heart{
     }
     header h3{
         font-size: 1em;
+    }
+    .answers .box .btn{
+        font-size: 0.8em;
     }
     .card .img_box{
         width: inherit;
