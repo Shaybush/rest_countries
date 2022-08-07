@@ -7,6 +7,7 @@ window.onload = () => {
 
 /** get the api of rest countries */
 function getCountry() {
+    
     const url = 'https://restcountries.com/v2/all';
     axios.get(url)
     .then(function(resp){
