@@ -21,9 +21,11 @@ header .fa-heart{
 }
 .fa.fa-angle-right{
     font-size: 2em;
+    cursor: pointer;
 }
 .fa.fa-angle-left{
     font-size: 2em;
+    cursor: pointer;
 }
 @media(max-width:768px){
     .row button{
