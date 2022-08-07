@@ -35,6 +35,7 @@ class Country{
         btn.addEventListener("click",()=>{
             // כפתור חזרה לכל המדינות
             console.log("clicked")
+            document.querySelector("#controls_id").classList.add("d-none");
             document.querySelector("#esc_id").classList.remove("d-none");
             let page = new CountryPage(this.parent,this.item , this.index);
         })

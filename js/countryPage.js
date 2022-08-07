@@ -40,6 +40,8 @@ class CountryPage {
         let prev = div.querySelector(".prev");
         let next = div.querySelector(".next");
         back.addEventListener("click",()=>{
+            document.querySelector("#controls_id").classList.remove("d-none");
+            document.querySelector("#esc_id").classList.add("d-none");
             createCountries();
         })
         prev.addEventListener("click", ()=>{
