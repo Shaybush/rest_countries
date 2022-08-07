@@ -10,12 +10,11 @@
     <script src="../js/app.js"></script>
     <script src="../js/country.js"></script>
     <script src="../js/countryPage.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/single.css">
-
+    <link rel="stylesheet" href="../css/style.css">
 </head>
-
 <body>
     <div class="container py-2">
         <a href="../index.html" class="link-secondary text-decoration-none fs-5">back</a>
@@ -24,6 +23,11 @@
             <input class="form-control" list="datalistOptions" id="country_list" placeholder="Search Country...">
             <datalist id="datalistOptions">
             </datalist>
+            <div class="filters mt-2">
+                <div class="results">
+                    <h6 class="text-secondary"><span id="result_id"></span></h6>
+                </div>
+            </div>
         </section>
         <div class="row" id="id_row">
         </div>
