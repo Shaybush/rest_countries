@@ -36,7 +36,7 @@ function declareEvents() {
     let country_input = document.querySelector("#country_list");
     // just if country input exist
     if (country_input) {
-        // listener until unput field
+        // listener until input field
         country_input.addEventListener("input", () => {
             document.querySelector("#id_row").innerHTML = '';
             document.querySelector("#datalistOptions").innerHTML = '';
