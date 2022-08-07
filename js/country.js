@@ -1,5 +1,5 @@
 class Country{
-     constructor(_parent,_item){
+     constructor(_parent, _item , _index){
         // item.name, item.population, item.flag, item.region, item.capital
         this.item = _item;
         this.parent = _parent;
@@ -7,6 +7,7 @@ class Country{
         this.img = _item.flag;
         this.region = _item.region;
         this.capital = _item.capital;
+        this.index = _index;
         this.render();
     }
     render(){
@@ -32,7 +33,7 @@ class Country{
         `
         let btn = myDiv.querySelector(".more_btn");
         btn.addEventListener("click",()=>{
-            let page = new CountryPage(this.parent,this.item);
+            let page = new CountryPage(this.parent,this.item , this.index);
         })
             
     }
