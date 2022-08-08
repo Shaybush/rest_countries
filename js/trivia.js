@@ -18,6 +18,8 @@ function getCountry() {
     axios.get(url)
         .then(function (resp) {
             countries_List = resp.data.filter(country => country.capital && Math.floor(((country.population / 1000000) * 100) / 100) > 0);
+            prevQuestion = [...countries_List];
+            // console.log(prevQuestion)
             build_trivia();
         })
         .catch(function () {
@@ -27,24 +29,37 @@ function getCountry() {
 
 function checkLocal() {
     if (localStorage["scoreListCapital"]) {
-        console.log(localStorage["scoreListCapital"]);
         scoresL = JSON.parse(localStorage["scoreListCapital"]);
     }
 }
 
 function build_trivia() {
     // filter countries if: capital == true && population bigger than 0M
-    const countries = countries_List;
-    let rnd = Math.floor(Math.random() * countries.length);
+    // const countries = countries_List;
+    let rnd_ar = [];
+    let counter = 0;
+    let rnd = Math.floor(Math.random() * prevQuestion.length);
+    let answers = [prevQuestion[rnd].capital];
+    let correct_ans = prevQuestion[rnd].capital;
+    let question = countries_List[rnd];
+    rnd_ar.push(rnd);
+    console.log(rnd);
+    console.log(prevQuestion[rnd].capital);
+
     // disable repeat
-    prevQuestion.push(rnd);
+    while(counter < 3 ){
+        rnd = Math.floor(Math.random() * prevQuestion.length);
+        // כאשר הוא לא נמצא במערך של ההגרלות
+        if(rnd_ar.indexOf(rnd) == -1){
+            rnd_ar.push(rnd);
+            answers.push(prevQuestion[rnd].capital);
+            counter++;
+        }
+    }
+    console.log(answers);
+    
+    let trivia = new TriviaClass(question, shuffle(answers), correct_ans);
     prevQuestion.splice(rnd,1);
-    let answer1 = countries[Math.floor(Math.random() * countries.length)].capital;
-    let answer2 = countries[Math.floor(Math.random() * countries.length)].capital;
-    let answer3 = countries[Math.floor(Math.random() * countries.length)].capital;
-    let answers = [countries[rnd].capital, answer1, answer2, answer3];
-    let correct_ans = countries[rnd].capital;
-    let trivia = new TriviaClass(rnd, shuffle(answers), correct_ans);
 }
 function updateUi() {
     let question_level = document.querySelector("#question_counter");

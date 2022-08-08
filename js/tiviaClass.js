@@ -2,10 +2,9 @@ class TriviaClass {
     constructor(_country, _answersArr, _correctAns) {
         // console.log(`${_country}\n${_answersArr}\n${_correctAns}`)
         //get country's index
-        this.country = countries_List[_country];
+        this.country = _country;
         //get array of random answers
         this.answers = _answersArr;
-        // console.log(this.answers);
         this.correctAns = _correctAns;
         this.render();
     }

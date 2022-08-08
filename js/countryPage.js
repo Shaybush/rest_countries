@@ -2,7 +2,7 @@ class CountryPage {
     constructor(_parent, _item , _index) {
         this.parent = _parent;
         this.name = _item.name;
-        this.pop = `${Math.floor((_item.population / 1000000) * 100) / 100}M`;
+        this.pop = `${(Math.floor((_item.population / 1000000) * 100) / 100).toLocaleString()}M`;
         this.img = _item.flag;
         this.language = _item.languages[0].name;
         this.region = _item.region;
