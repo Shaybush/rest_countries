@@ -39,9 +39,9 @@ function build_trivia() {
     let rnd_ar = [];
     let counter = 0;
     let rnd = Math.floor(Math.random() * prevQuestion.length);
-    let answers = [prevQuestion[rnd].capital];
     let correct_ans = prevQuestion[rnd].capital;
-    let question = countries_List[rnd];
+    let question = prevQuestion[rnd];
+    let answers = [prevQuestion[rnd].capital];
     rnd_ar.push(rnd);
     console.log(rnd);
     console.log(prevQuestion[rnd].capital);
