@@ -60,7 +60,7 @@ class TriviaClass {
                     else {
                         level++;
                         lives--;
-                        if (lives == 0) {
+                        if (lives == 0 ||prevQuestion.length == 4) {
                             let gameOver = new GameOver("#id_question",points);
                             return;
                             // window.open('../index.html');

@@ -43,9 +43,6 @@ function build_trivia() {
     let question = prevQuestion[rnd];
     let answers = [prevQuestion[rnd].capital];
     rnd_ar.push(rnd);
-    console.log(rnd);
-    console.log(prevQuestion[rnd].capital);
-
     // disable repeat
     while(counter < 3 ){
         rnd = Math.floor(Math.random() * prevQuestion.length);
@@ -56,8 +53,6 @@ function build_trivia() {
             counter++;
         }
     }
-    console.log(answers);
-    
     let trivia = new TriviaClass(question, shuffle(answers), correct_ans);
     prevQuestion.splice(rnd,1);
 }
