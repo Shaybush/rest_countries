@@ -1,3 +1,4 @@
+let lastSearch,lastSelect;
 class Country{
      constructor(_parent, _item , _index){
         // item.name, item.population, item.flag, item.region, item.capital
@@ -34,9 +35,10 @@ class Country{
         let btn = myDiv.querySelector(".more_btn");
         btn.addEventListener("click",()=>{
             // כפתור חזרה לכל המדינות
-            console.log("clicked")
             document.querySelector("#controls_id").classList.add("d-none");
             document.querySelector("#esc_id").classList.remove("d-none");
+            lastSearch =document.querySelector("#country_list").value;
+            lastSelect = document.querySelector("#filter_id").value;
             let page = new CountryPage(this.parent,this.item , this.index);
         })
             

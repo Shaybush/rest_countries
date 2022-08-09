@@ -52,9 +52,9 @@ class TriviaClass {
                         document.body.style.background = "lightgreen";
                         level++;
                         points++;
-                        updateUi();
                         setTimeout(function () {
                             build_trivia()
+                            updateUi();
                         }, 2000);
                     }
                     else {
@@ -66,10 +66,14 @@ class TriviaClass {
                             // window.open('../index.html');
                         }
                         document.body.style.background = "rgb(255, 104, 104)";
-                        updateUi();
-                        e.style.background = "red";
+                        // if answer == correctAsnwer than the background change green else red
+                        btns_ar.forEach((e) => {
+                            e.style.background = e.innerHTML == this.correctAns ? "green" : "red";
+                        })
+                        // e.style.background = "red";
                         setTimeout(function () {
                             build_trivia()
+                            updateUi();
                         }, 2000);
                     }
                 }

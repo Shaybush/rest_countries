@@ -42,7 +42,7 @@ class CountryPage {
         back.addEventListener("click",()=>{
             document.querySelector("#controls_id").classList.remove("d-none");
             document.querySelector("#esc_id").classList.add("d-none");
-            createCountries();
+            createCountries(lastSearch,lastSelect);
         })
         prev.addEventListener("click", ()=>{
             if(this.index-1>-1){
