@@ -17,7 +17,7 @@ function getCountry() {
     let url = "https://restcountries.com/v2/all"
     axios.get(url)
         .then(function (resp) {
-            countries_List = resp.data.filter(country => country.capital && Math.floor(((country.population / 1000000) * 100) / 100) > 0);
+            countries_List = resp.data.filter(country => country.capital && Math.floor(((country.population / 1000000) * 100) / 100) > 0 && country.name != 'Palestine, State of');
             prevQuestion = [...countries_List];
             // console.log(prevQuestion)
             build_trivia();
@@ -53,7 +53,7 @@ function build_trivia() {
             counter++;
         }
     }
-    let trivia = new TriviaClass(question, shuffle(answers), correct_ans);
+    let trivia = new TriviaClass("#id_row",question, shuffle(answers), correct_ans);
     prevQuestion.splice(rnd,1);
 }
 function updateUi() {

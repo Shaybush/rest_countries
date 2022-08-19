@@ -10,7 +10,6 @@ const updateUi = () => {
     document.querySelector("#id_tbody").innerHTML = "";
     obj_scores.forEach((element, index) => {
       let tr = document.createElement("tr");
-      
       tr.innerHTML = `
         <td>${element.fullName}</td>
         <td>${element.points}</td>
