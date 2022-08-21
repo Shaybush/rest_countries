@@ -12,7 +12,7 @@ function getCountry() {
     axios.get(url)
     .then(function(resp){
         // console.log(resp.data);
-        countries_List = resp.data.filter(country => country.capital && Math.floor(((country.population / 1000000) * 100) / 100) > 0);
+        countries_List = resp.data.filter(country => country.capital && Math.floor(((country.population / 1000000) * 100) / 100) > 0 && country.name != 'Palestine, State of');
         filtersUpdate(countries_List.length);
         createCountries();
     });
