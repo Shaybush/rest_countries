@@ -2,7 +2,7 @@ class CountryPage {
     constructor(_parent, _item , _index) {
         this.parent = _parent;
         this.name = _item.name;
-        this.pop = `${Math.floor((_item.population / 1000000) * 100) / 100}M`;
+        this.pop = `${(Math.floor((_item.population / 1000000) * 100) / 100).toLocaleString()}M`;
         this.img = _item.flag;
         this.language = _item.languages[0].name;
         this.region = _item.region;
@@ -36,13 +36,23 @@ class CountryPage {
           <i class="fa fa-angle-right" aria-hidden="true"></i>
        </div>
         `
-        let prev = div.querySelector(".prev")
-        let next = div.querySelector(".next")
+        let back = document.querySelector("#esc_btn");
+        let prev = div.querySelector(".prev");
+        let next = div.querySelector(".next");
+        back.addEventListener("click",()=>{
+            document.querySelector("#controls_id").classList.remove("d-none");
+            document.querySelector("#esc_id").classList.add("d-none");
+            createCountries(lastSearch,lastSelect);
+        })
         prev.addEventListener("click", ()=>{
-            let page = new CountryPage(this.parent,countries_List[this.index-1] , this.index-1);
+            if(this.index-1>-1){
+                let page = new CountryPage(this.parent,countries_List[this.index-1] , this.index-1);
+            }
         })
         next.addEventListener("click", ()=>{
-            let page = new CountryPage(this.parent,countries_List[this.index+1] , this.index+1);
+            if(this.index+1 !=countries_List.length){
+                let page = new CountryPage(this.parent,countries_List[this.index+1] , this.index+1);
+            }
         })
     }
 }

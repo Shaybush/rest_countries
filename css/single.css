@@ -9,6 +9,7 @@ h1,h2,h3,h4,h5,h6{
 .row .country_img {
     max-width: 600px;
     height: 300px;
+    /* color: burlywood; */
 }
 
 .row .country_img img {

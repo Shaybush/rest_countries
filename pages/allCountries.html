@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Practice-mode</title>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="../js/app.js"></script>
     <script src="../js/country.js"></script>
@@ -17,19 +18,28 @@
 </head>
 <body>
     <div class="container py-2">
-        <a href="../index.html" class="link-secondary text-decoration-none fs-5">back</a>
         <section class="pb-4">
             <label for="country_list" class="form-label">Countries Search:</label>
             <input class="form-control" list="datalistOptions" id="country_list" placeholder="Search Country...">
             <datalist id="datalistOptions">
             </datalist>
-            <div class="filters mt-2">
+            <div id="controls_id" class="controls mt-2 d-flex justify-content-between align-items-center">
                 <div class="results">
                     <h6 class="text-secondary"><span id="result_id"></span></h6>
+                </div>
+                <div class="filter_select">
+                    <select id="filter_id" class="form-select" aria-label="Default select example">
+                        <option selected value="name">Name</option>
+                        <option value="population">Poplution</option>
+                        <option value="region">Region</option>
+                    </select>
                 </div>
             </div>
         </section>
         <div class="row" id="id_row">
+        </div>
+        <div id="esc_id" class="esc d-none">
+            <button id="esc_btn" class="btn btn-secondary btn-sm">Back</button>
         </div>
     </div>
 </body>

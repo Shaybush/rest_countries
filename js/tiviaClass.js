@@ -1,11 +1,11 @@
 class TriviaClass {
-    constructor(_country, _answersArr, _correctAns) {
+    constructor(_parent,_country, _answersArr, _correctAns) {
         // console.log(`${_country}\n${_answersArr}\n${_correctAns}`)
         //get country's index
-        this.country = countries_List[_country];
+        this.parent =_parent;
+        this.country = _country;
         //get array of random answers
         this.answers = _answersArr;
-        // console.log(this.answers);
         this.correctAns = _correctAns;
         this.render();
     }
@@ -17,22 +17,15 @@ class TriviaClass {
         <div class="img_box mx-auto mt-2 mb-3" style="width: 200px;">
         <img src='${this.country.flag}' style="box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);" width="100%">
         </div>
-        
         `
-        document.querySelector("#id_row").innerHTML = `
+        document.querySelector(this.parent).innerHTML = '';
+        this.answers.forEach((item,i)=>{
+            document.querySelector(this.parent).innerHTML +=`
             <div class="box p-2 col-12 col-lg-5">
-            <button id="answer1" class="btn btn-dark w-100">${this.answers[0]}</button>
+            <button id="answer${i+1}" class="btn btn-dark w-100">${this.answers[i]}</button>
             </div>
-            <div class="box p-2 col-12 col-lg-5">
-            <button id="answer2" class="btn btn-dark w-100">${this.answers[1]}</button>
-            </div>
-            <div class="box p-2 col-12 col-lg-5">
-            <button id="answer3" class="btn btn-dark w-100">${this.answers[2]}</button>
-            </div>
-            <div class="box p-2 col-12 col-lg-5">
-            <button id="answer4" class="btn btn-dark w-100">${this.answers[3]}</button> 
-            </div>
-        `;
+            `
+        })
         // help flag for click once
         let flag = false;
         document.body.style.background = "white";
@@ -53,24 +46,28 @@ class TriviaClass {
                         document.body.style.background = "lightgreen";
                         level++;
                         points++;
-                        updateUi();
                         setTimeout(function () {
                             build_trivia()
+                            updateUi();
                         }, 2000);
                     }
                     else {
                         level++;
                         lives--;
-                        if (lives == 0) {
+                        if (lives == 0 ||prevQuestion.length == 4) {
                             let gameOver = new GameOver("#id_question",points);
                             return;
                             // window.open('../index.html');
                         }
                         document.body.style.background = "rgb(255, 104, 104)";
-                        updateUi();
-                        e.style.background = "red";
+                        // if answer == correctAsnwer than the background change green else red
+                        btns_ar.forEach((e) => {
+                            e.style.background = e.innerHTML == this.correctAns ? "green" : "red";
+                        })
+                        // e.style.background = "red";
                         setTimeout(function () {
                             build_trivia()
+                            updateUi();
                         }, 2000);
                     }
                 }
