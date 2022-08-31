@@ -13,27 +13,23 @@ const init = () => {
     getCountry();
     updateUi();
 }
-function getCountry() {
+const getCountry = async() => {
     let url = "https://restcountries.com/v2/all"
-    axios.get(url)
-        .then(function (resp) {
-            countries_List = resp.data.filter(country => country.capital && Math.floor(((country.population / 1000000) * 100) / 100) > 0 && country.name != 'Palestine, State of');
-            prevQuestion = [...countries_List];
-            // console.log(prevQuestion)
-            build_trivia();
-        })
-        .catch(function () {
-            console.log("cannot find your data")
-        })
+    let resp = await fetch(url);
+    let data = await resp.json();
+    countries_List = data.filter(country => country.capital && Math.floor(((country.population / 1000000) * 100) / 100) > 0 && country.name != 'Palestine, State of');
+    prevQuestion = [...countries_List];
+    build_trivia();
+
 }
 
-function checkLocal() {
+const checkLocal = () => {
     if (localStorage["scoreListCapital"]) {
         scoresL = JSON.parse(localStorage["scoreListCapital"]);
     }
 }
 
-function build_trivia() {
+const build_trivia = () => {
     // filter countries if: capital == true && population bigger than 0M
     // const countries = countries_List;
     let rnd_ar = [];
@@ -56,7 +52,7 @@ function build_trivia() {
     let trivia = new TriviaClass("#id_row",question, shuffle(answers), correct_ans);
     prevQuestion.splice(rnd,1);
 }
-function updateUi() {
+const updateUi = () => {
     let question_level = document.querySelector("#question_counter");
     question_level.innerHTML = `Question : ${level}`;
     let lives_div = document.querySelector("#liveIcon");
@@ -69,7 +65,7 @@ function updateUi() {
     }
 }
 /** shuffle array places */
-function shuffle(array) {
+const shuffle = array => {
     let currentIndex = array.length, randomIndex;
     // While there remain elements to shuffle.
     while (currentIndex != 0) {
