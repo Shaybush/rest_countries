@@ -11,7 +11,6 @@ const  getCountry = async() => {
     const url = 'https://restcountries.com/v2/all';
     let resp = await fetch(url);
     let data = await resp.json();
-        // console.log(resp.data);
         countries_List = data.filter(country => country.capital && Math.floor(((country.population / 1000000) * 100) / 100) > 0);
         filtersUpdate(countries_List.length);
         createCountries();

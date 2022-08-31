@@ -54,7 +54,7 @@ const build_trivia = () => {
 }
 const updateUi = () => {
     let question_level = document.querySelector("#question_counter");
-    question_level.innerHTML = `question : ${level}`;
+    question_level.innerHTML = `Question : ${level}`;
     let lives_div = document.querySelector("#liveIcon");
     lives_div.innerHTML = "";
     for (let i = 0; i < lives; i++) {
