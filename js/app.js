@@ -7,19 +7,19 @@ window.onload = () => {
 }
 
 /** get the api of rest countries */
-function getCountry() {
+const  getCountry = async() => {
     const url = 'https://restcountries.com/v2/all';
-    axios.get(url)
-    .then(function(resp){
+    let resp = await fetch(url);
+    let data = await resp.json();
         // console.log(resp.data);
-        countries_List = resp.data.filter(country => country.capital && Math.floor(((country.population / 1000000) * 100) / 100) > 0);
+        countries_List = data.filter(country => country.capital && Math.floor(((country.population / 1000000) * 100) / 100) > 0);
         filtersUpdate(countries_List.length);
         createCountries();
-    });
+
 }
 
 /**create all the contries from json file */
-function createCountries(input="",selectedV = "name") {
+const createCountries = (input="",selectedV = "name") => {
     if (countries_List) {
         console.log(countries_List);
         console.log(`selected value : ${selectedV}`);
@@ -42,7 +42,7 @@ const filtersUpdate = (searchFound) =>{
     document.querySelector("#result_id").innerHTML = `found ${searchFound} countries`;
 }
 /** Manage all the events */
-function declareEvents() {
+const declareEvents = () => {
     let country_input = document.querySelector("#country_list");
     let selected_input = document.querySelector("#filter_id");
     // just if country input exist
